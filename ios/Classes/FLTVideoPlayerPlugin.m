@@ -323,9 +323,16 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
     CGFloat height = size.height;
 
     // The player has not yet initialized.
-    if (height == CGSizeZero.height && width == CGSizeZero.width) {
-      return;
-    }
+    //if (height == CGSizeZero.height && width == CGSizeZero.width) {
+    //  return;
+    //}
+    if ([[(AVAsset *)[self.player currentItem].asset tracksWithMediaType:AVMediaTypeVideo] count] != 0) {
+		  // The player has not yet initialized.
+		  if (height == CGSizeZero.height && width == CGSizeZero.width) {
+			  return;
+		  }
+	  }
+  
     // The player may be initialized but still needs to determine the duration.
     if ([self duration] == 0) {
       return;
